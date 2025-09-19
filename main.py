@@ -32,17 +32,25 @@ class Vehicle:
 
         # Update position
         import math
-        self.lat += speed_deg_per_sec * math.cos(math.radians(self.direction))
-        self.lng += speed_deg_per_sec * math.sin(math.radians(self.direction))
+        new_lat = self.lat + speed_deg_per_sec * math.cos(math.radians(self.direction))
+        new_lng = self.lng + speed_deg_per_sec * math.sin(math.radians(self.direction))
 
-        # Keep vehicles within bounds around user location (±0.1 degrees ~ 11km)
-        lat_min = user_location["lat"] - 0.1
-        lat_max = user_location["lat"] + 0.1
-        lng_min = user_location["lng"] - 0.1
-        lng_max = user_location["lng"] + 0.1
+        # Check if new position is within reasonable bounds around user location
+        # Calculate distance from user location
+        lat_diff = new_lat - user_location["lat"]
+        lng_diff = new_lng - user_location["lng"]
+        distance_from_user = math.sqrt(lat_diff**2 + lng_diff**2)
 
-        self.lat = max(lat_min, min(lat_max, self.lat))
-        self.lng = max(lng_min, min(lng_max, self.lng))
+        # If vehicle gets too far (more than ~10km), reverse direction
+        max_distance = 0.09  # approximately 10km
+        if distance_from_user > max_distance:
+            # Reverse direction to head back towards user area
+            self.direction = (self.direction + 180) % 360
+            # Don't update position this time, just change direction
+        else:
+            # Update position normally
+            self.lat = new_lat
+            self.lng = new_lng
 
         # Occasionally change speed and status
         if random.random() < 0.1:
