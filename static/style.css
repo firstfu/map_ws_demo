@@ -1,0 +1,331 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background: #fff;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.status {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    background: #f0f0f0;
+    color: #666;
+}
+
+.status.connected {
+    background: #e8f5e8;
+    color: #2d7d32;
+}
+
+.status.disconnected {
+    background: #ffebee;
+    color: #c62828;
+}
+
+.btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 6px;
+    background: #1976d2;
+    color: white;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.btn:hover {
+    background: #1565c0;
+}
+
+.btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    height: calc(100vh - 80px);
+}
+
+.map-container {
+    flex: 1;
+    position: relative;
+}
+
+#map {
+    height: 100%;
+    width: 100%;
+}
+
+.sidebar {
+    width: 320px;
+    background: #fff;
+    border-left: 1px solid #e0e0e0;
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+.sidebar h3 {
+    margin-bottom: 1rem;
+    color: #333;
+    font-weight: 600;
+}
+
+.vehicle-stats {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+}
+
+.stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.875rem;
+}
+
+.stat-label {
+    color: #666;
+}
+
+.available { color: #2e7d32; font-weight: 600; }
+.busy { color: #f57c00; font-weight: 600; }
+.offline { color: #d32f2f; font-weight: 600; }
+
+.vehicle-list {
+    max-height: calc(100vh - 250px);
+    overflow-y: auto;
+}
+
+.vehicle-item {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.vehicle-item:hover {
+    border-color: #1976d2;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.vehicle-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.vehicle-id {
+    font-weight: 600;
+    color: #333;
+    font-size: 0.875rem;
+}
+
+.vehicle-status {
+    padding: 0.25rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.vehicle-status.available {
+    background: #e8f5e8;
+    color: #2e7d32;
+}
+
+.vehicle-status.busy {
+    background: #fff3e0;
+    color: #f57c00;
+}
+
+.vehicle-status.offline {
+    background: #ffebee;
+    color: #d32f2f;
+}
+
+.vehicle-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    color: #666;
+}
+
+.vehicle-info span {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Custom vehicle marker styles */
+.vehicle-marker {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+/* User location marker styles */
+.user-location-marker {
+    position: relative;
+}
+
+.user-location-dot {
+    width: 20px;
+    height: 20px;
+    background: #2196f3;
+    border: 3px solid white;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(33, 150, 243, 0.5);
+    animation: pulse-user 2s infinite;
+}
+
+@keyframes pulse-user {
+    0% {
+        box-shadow: 0 0 0 0 rgba(33, 150, 243, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(33, 150, 243, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(33, 150, 243, 0);
+    }
+}
+
+.vehicle-marker.available {
+    background: #4caf50;
+}
+
+.vehicle-marker.busy {
+    background: #ff9800;
+}
+
+.vehicle-marker.offline {
+    background: #f44336;
+}
+
+/* Loading animation */
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+.loading {
+    animation: pulse 1.5s infinite;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 280px;
+    }
+
+    header {
+        padding: 1rem;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .controls {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 600px) {
+    main {
+        flex-direction: column;
+    }
+
+    .map-container {
+        height: 60%;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: 40%;
+        border-left: none;
+        border-top: 1px solid #e0e0e0;
+    }
+}
+
+/* Leaflet popup customization */
+.leaflet-popup-content-wrapper {
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.leaflet-popup-content {
+    font-family: inherit;
+    margin: 12px 16px;
+}
+
+.popup-content {
+    text-align: center;
+}
+
+.popup-content h4 {
+    margin: 0 0 8px 0;
+    color: #333;
+    font-weight: 600;
+}
+
+.popup-content p {
+    margin: 4px 0;
+    font-size: 0.875rem;
+    color: #666;
+}

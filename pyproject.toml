@@ -1,0 +1,17 @@
+[project]
+name = "map-ws-demo"
+version = "1.0.0"
+description = "FastAPI + WebSocket application simulating Uber vehicle movements on a map"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.104.1",
+    "uvicorn[standard]>=0.24.0",
+    "websockets>=12.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-asyncio>=0.21.0",
+    "httpx>=0.24.0",
+]

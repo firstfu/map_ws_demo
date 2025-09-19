@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uber Vehicle Simulation</title>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+          crossorigin=""/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚗 Uber Vehicle Simulation</h1>
+            <div class="controls">
+                <div class="status" id="status">正在連接...</div>
+                <button id="toggleSimulation" class="btn">暫停模擬</button>
+            </div>
+        </header>
+
+        <main>
+            <div class="map-container">
+                <div id="map"></div>
+            </div>
+
+            <div class="sidebar">
+                <h3>車輛狀態</h3>
+                <div class="vehicle-stats">
+                    <div class="stat">
+                        <span class="stat-label">總車輛:</span>
+                        <span id="totalVehicles">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">可用:</span>
+                        <span id="availableVehicles" class="available">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">忙碌:</span>
+                        <span id="busyVehicles" class="busy">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">離線:</span>
+                        <span id="offlineVehicles" class="offline">0</span>
+                    </div>
+                </div>
+
+                <div class="vehicle-list" id="vehicleList">
+                    <!-- Vehicle items will be populated here -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+            crossorigin=""></script>
+
+    <!-- Custom JavaScript -->
+    <script src="app.js"></script>
+</body>
+</html>
