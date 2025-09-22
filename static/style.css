@@ -236,18 +236,27 @@ main {
 
 /* Custom vehicle marker styles */
 .vehicle-marker {
-    width: 30px;
-    height: 30px;
+    width: 60px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
-    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
 }
 
 .vehicle-marker svg {
-    width: 24px;
-    height: 24px;
+    width: 50px;
+    height: 50px;
+}
+
+/* Override any Leaflet default styles */
+.leaflet-div-icon {
+    background: transparent !important;
+    border: none !important;
 }
 
 /* User location marker styles */
@@ -277,17 +286,7 @@ main {
     }
 }
 
-.vehicle-marker.available {
-    background: #4caf50;
-}
-
-.vehicle-marker.busy {
-    background: #ff9800;
-}
-
-.vehicle-marker.offline {
-    background: #f44336;
-}
+/* Vehicle marker status colors are now handled via SVG fill colors */
 
 /* Loading animation */
 @keyframes pulse {
