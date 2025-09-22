@@ -257,6 +257,53 @@ main {
 .leaflet-div-icon {
     background: transparent !important;
     border: none !important;
+    width: 60px !important;
+    height: 60px !important;
+}
+
+.leaflet-div-icon .vehicle-marker {
+    width: 60px !important;
+    height: 60px !important;
+}
+
+.leaflet-div-icon .vehicle-marker svg {
+    width: 50px !important;
+    height: 50px !important;
+}
+
+/* Additional selectors to ensure the icons are large */
+.leaflet-marker-icon {
+    width: 60px !important;
+    height: 60px !important;
+}
+
+.leaflet-marker-icon .vehicle-marker {
+    width: 60px !important;
+    height: 60px !important;
+}
+
+.leaflet-marker-icon svg {
+    width: 50px !important;
+    height: 50px !important;
+}
+
+/* Vehicle SVG size override - more specific */
+.leaflet-marker-icon svg,
+.leaflet-div-icon svg,
+.vehicle-marker svg {
+    width: 50px !important;
+    height: 50px !important;
+}
+
+/* Make sure all vehicle related elements are large */
+[class*="vehicle"] {
+    width: 60px !important;
+    height: 60px !important;
+}
+
+[class*="vehicle"] svg {
+    width: 50px !important;
+    height: 50px !important;
 }
 
 /* User location marker styles */
