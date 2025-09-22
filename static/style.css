@@ -236,16 +236,18 @@ main {
 
 /* Custom vehicle marker styles */
 .vehicle-marker {
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
+    width: 30px;
+    height: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 12px;
-    font-weight: bold;
-    color: white;
     transition: all 0.3s ease;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+.vehicle-marker svg {
+    width: 24px;
+    height: 24px;
 }
 
 /* User location marker styles */
