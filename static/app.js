@@ -1,14 +1,16 @@
+// Uber 車輛模擬主類別：管理地圖、WebSocket 連線和車輛顯示
 class UberSimulation {
     constructor() {
-        this.map = null;
-        this.websocket = null;
-        this.vehicles = new Map();
-        this.markers = new Map();
-        this.userLocationMarker = null;
-        this.userLocation = null;
-        this.isSimulationRunning = true;
-        this.reconnectAttempts = 0;
-        this.maxReconnectAttempts = 5;
+        // 初始化類別屬性
+        this.map = null;                    // Leaflet 地圖實例
+        this.websocket = null;              // WebSocket 連線
+        this.vehicles = new Map();          // 車輛資料儲存 (ID -> 車輛資料)
+        this.markers = new Map();           // 地圖標記儲存 (ID -> 標記)
+        this.userLocationMarker = null;     // 使用者位置標記
+        this.userLocation = null;           // 使用者位置座標
+        this.isSimulationRunning = true;    // 模擬執行狀態
+        this.reconnectAttempts = 0;         // 重連嘗試次數
+        this.maxReconnectAttempts = 5;      // 最大重連次數
 
         this.init();
     }

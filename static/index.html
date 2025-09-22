@@ -1,35 +1,44 @@
 <!DOCTYPE html>
+<!-- Uber 車輛模擬應用程式的主要 HTML 檔案 -->
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Uber Vehicle Simulation</title>
 
-    <!-- Leaflet CSS -->
+    <!-- Leaflet 地圖函式庫的 CSS 樣式 -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
           integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
           crossorigin=""/>
 
-    <!-- Custom CSS -->
+    <!-- 自訂 CSS 樣式檔案 -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- 主要容器：包含整個應用程式的版面 -->
     <div class="container">
+        <!-- 頁面標題列：包含應用程式標題和控制按鈕 -->
         <header>
             <h1>🚗 Uber Vehicle Simulation</h1>
             <div class="controls">
+                <!-- 連線狀態顯示 -->
                 <div class="status" id="status">正在連接...</div>
+                <!-- 模擬控制按鈕 -->
                 <button id="toggleSimulation" class="btn">暫停模擬</button>
             </div>
         </header>
 
+        <!-- 主要內容區域：地圖和側邊欄 -->
         <main>
+            <!-- 地圖容器：顯示互動式地圖 -->
             <div class="map-container">
                 <div id="map"></div>
             </div>
 
+            <!-- 側邊欄：顯示車輛統計和詳細列表 -->
             <div class="sidebar">
                 <h3>車輛狀態</h3>
+                <!-- 車輛統計摘要 -->
                 <div class="vehicle-stats">
                     <div class="stat">
                         <span class="stat-label">總車輛:</span>
@@ -49,19 +58,20 @@
                     </div>
                 </div>
 
+                <!-- 車輛詳細列表：由 JavaScript 動態填充 -->
                 <div class="vehicle-list" id="vehicleList">
-                    <!-- Vehicle items will be populated here -->
+                    <!-- 車輛項目將由 JavaScript 動態產生 -->
                 </div>
             </div>
         </main>
     </div>
 
-    <!-- Leaflet JavaScript -->
+    <!-- Leaflet 地圖函式庫的 JavaScript -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
             integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
             crossorigin=""></script>
 
-    <!-- Custom JavaScript -->
+    <!-- 自訂 JavaScript 應用程式邏輯 -->
     <script src="app.js"></script>
 </body>
 </html>
